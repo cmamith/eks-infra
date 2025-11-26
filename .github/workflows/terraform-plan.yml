@@ -9,7 +9,7 @@ on:
 
 jobs:
   terraform-plan:
-    uses: amithcm/eks-infra-pipeline/.github/workflows/terraform-plan.yaml@main
+    uses: amithcm/eks-infra-pipeline/.github/workflows/terraform-plan.yml@main
     with:
       workdir: envs/dev/ap-southeast-1
     secrets:
