@@ -61,7 +61,7 @@ resource "aws_route_table_association" "public" {
 resource "aws_eip" "nat" {
   count = var.enable_nat_gateway ? 1 : 0
 
-  vpc = true
+  domain = "vpc"
 
   tags = merge(
     { Name = "eks-nat-eip" },
