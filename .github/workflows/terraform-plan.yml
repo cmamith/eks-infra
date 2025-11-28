@@ -7,6 +7,10 @@ on:
       - '**/*.tf'
       - '.github/workflows/**'
 
+permissions:
+  id-token: write       # <-- REQUIRED
+  contents: read        # <-- REQUIRED for checkout
+
 jobs:
   terraform-plan:
     uses: cmamith/eks-infra-pipeline/.github/workflows/terraform-plan-reusable.yml@main
