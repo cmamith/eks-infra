@@ -73,7 +73,7 @@ resource "aws_nat_gateway" "nat" {
   count = var.enable_nat_gateway ? 1 : 0
 
   allocation_id = aws_eip.nat[0].id
-  subnet_id     = element(aws_subnet.public[*].id, 0)
+  subnet_id     = element([for s in aws_subnet.public : s.id], 0)
 
   tags = merge(
     { Name = "eks-nat" },
