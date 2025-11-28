@@ -1,0 +1,21 @@
+name: Terraform Plan (dev)
+
+on:
+  pull_request:
+    paths:
+      - 'envs/dev/**'
+      - '**/*.tf'
+      - '.github/workflows/**'
+
+permissions:
+  id-token: write       # <-- REQUIRED
+  contents: read        # <-- REQUIRED for checkout
+
+jobs:
+  terraform-plan:
+    uses: cmamith/eks-infra-pipeline/.github/workflows/terraform-plan-reusable.yml@main
+    with:
+      workdir: envs/dev/ap-southeast-1
+    secrets:
+      AWS_ROLE_ARN: ${{ secrets.AWS_ROLE_ARN }}
+      AWS_REGION:   ${{ secrets.AWS_REGION }}
