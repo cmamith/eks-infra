@@ -1,3 +1,4 @@
+---
 name: Terraform Apply (dev)
 
 on:
@@ -22,3 +23,4 @@ jobs:
     secrets:
       AWS_ROLE_ARN: ${{ secrets.AWS_ROLE_ARN }}
       AWS_REGION:   ${{ secrets.AWS_REGION }}
+
