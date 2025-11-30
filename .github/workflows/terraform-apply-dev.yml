@@ -14,16 +14,10 @@ permissions:
 
 jobs:
   apply:
-    runs-on: ubuntu-latest
-    environment: dev
-
-    steps:
-      - name: Call reusable apply workflow
-        uses: cmamith/eks-infra-pipeline/.github/workflows/terraform-apply-reusable.yml@main
-        with:
-          workdir: envs/dev/ap-southeast-1
-        env:
-          AWS_ROLE_ARN: ${{ secrets.AWS_ROLE_ARN }}
-          AWS_REGION:   ${{ secrets.AWS_REGION }}
-
-
+    uses: cmamith/eks-infra-pipeline/.github/workflows/terraform-apply-reusable.yml@main
+    with:
+      workdir: envs/dev/ap-southeast-1
+      environment: dev        # <── we pass this as an INPUT instead!
+    secrets:
+      AWS_ROLE_ARN: ${{ secrets.AWS_ROLE_ARN }}
+      AWS_REGION:   ${{ secrets.AWS_REGION }}
