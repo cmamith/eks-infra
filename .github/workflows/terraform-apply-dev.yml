@@ -14,11 +14,10 @@ permissions:
 
 jobs:
   apply:
-    name: Apply Terraform (dev)
-    environment: dev
     uses: cmamith/eks-infra-pipeline/.github/workflows/terraform-apply-reusable.yml@main
     with:
       workdir: envs/dev/ap-southeast-1
+      environment: dev       
     secrets:
       AWS_ROLE_ARN: ${{ secrets.AWS_ROLE_ARN }}
       AWS_REGION:   ${{ secrets.AWS_REGION }}
